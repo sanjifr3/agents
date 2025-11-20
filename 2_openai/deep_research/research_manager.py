@@ -85,4 +85,3 @@ class ResearchManager:
             report.markdown_report,
         )
         print("Email sent")
-        return report
