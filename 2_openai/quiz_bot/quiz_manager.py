@@ -57,7 +57,7 @@ class QuizManager:
         print("Finished searching")
         return results
 
-    async def search(self, item: WebSearchItem) -> str | None:
+    async def search(self, item: SearchItem) -> str | None:
         """Perform a search for the query"""
         input = f"Search term: {item.query}\nReason for searching: {item.reason}"
         try:
@@ -82,10 +82,10 @@ class QuizManager:
         )
         return result.final_output_as(FoundationalKnowledgeData)
 
-    async def send_email(self, foundational_knowledge: ReportData):
+    async def send_email(self, foundational_knowledge: FoundationalKnowledgeData):
         """Send the foundational knowledge via email"""
         print("Sending email...")
-        email_content = f"Subject: Foundational Knowledge Document\n\n{foundational_knowledge.markdown_report}"
+        email_content = f"Subject: Foundational Knowledge Document\n\n{foundational_knowledge.markdown_foundational_knowledge}"
         await Runner.run(
             email_agent,
             email_content,
