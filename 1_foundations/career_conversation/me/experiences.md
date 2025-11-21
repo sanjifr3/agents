@@ -1,4 +1,4 @@
-Lead AI / Machine Learning Engineer, AI/ML Platform Engineering
+Senior AI / Machine Learning Engineer (Technical Lead), AI/ML Platform Engineering
 
 Permanent Part-time
 
@@ -6,12 +6,12 @@ Oct 2024 - Present · 1 yr 2 mos
 
 Toronto, Ontario, Canada
 
-- Served as sole technical lead and service owner for custom AI/ML/GenAI model platform engineering and AIOps/MLOps/LLMOps across a 95,000+ employee organization, providing technical direction and subject matter expertise to leadership and engineering & business teams
-- Architected and developed enterprise-wide AI/MLOps pipelines using GitHub Actions with automated model scanning and promotion patterns, now used by every AI/ML and data science team at TD, standardizing model deployment with proper change management and controls
-- Engineered CI/CD pipelines for third-party model curation with Hiddenlayer vulnerability scanning and governance workflows, plus dynamic Azure Policy framework for Model Catalog whitelist management, enabling secure open-source model ingestion with role-based controls
-- Translated business requirements into actionable epics/stories for agile development, ensuring alignment between stakeholder needs and technical implementation across multiple concurrent initiatives
-- Designed the high availability and disaster recovery (HA/DR) architecture patterns for AzureML inferencing, ensuring resilient model serving for mission-critical applications
-- Led team of 8 engineers to deliver 400+ stories, and 20+ features/releases, enabling RAG, ML/AIOps, custom model training, and responsible AI capabilities enterprise-wide
+- Served as sole technical lead and service owner for custom AI/ML/GenAI model platform engineering and AIOps/MLOps/LLMOps across a 95,000+ employee organisation, providing deep technical guidance and subject matter expertise to leadership and engineering & business teams
+- Architected and developed enterprise-wide AI/MLOps pipelines using GitHub Actions with automated model scanning and promotion patterns, now used by every AI/ML and data science team at TD, standardising model deployment with proper change management and controls
+- Designed and implemented CI/CD workflows for third-party model curation with Hiddenlayer vulnerability scanning and governance integration, and dynamic Azure Policy-based Model Catalog access controls to enable secure open-source model onboarding
+- Translated business requirements into technical specifications and drove architectural decisions, ensuring alignment between stakeholder outcomes and engineering execution
+- Designed high availability and disaster recovery (HA/DR) architecture patterns for AzureML inferencing, ensuring operational resilient model serving for mission-critical AI applications
+- Performed technical reviews, solution validation, and code-level guidance across 400+ stories and 20+ feature releases for an engineering team of 8, enabling delivery of RAG, AIOps, custom training, and responsible AI capabilities enterprise-wide
 
 Skills: Generative AI, Large Language Models (LLM), +10 skills
 
@@ -39,9 +39,9 @@ Jan 2023 - Aug 2023 · 8 mos
 Toronto, Ontario, Canada · Hybrid
 
 - Led end-to-end development of enterprise-wide form digitization solution, delivering millions in annual cost savings
-- Designed and implemented a scalable, microservice architecture featuring a web app, REST APIs, and database models (MongoDB/Redis/MySQL) to enable a queue processing system, using virtual machines and Posit Workbench
+- Designed and implemented a scalable, microservice queue architecture featuring a web app, FastAPI, REST APIs, and database models (MongoDB/Redis/MySQL), using virtual machines and Posit Workbench
 - Mentored junior developer in creating the front-end of the web app
-- Presented the concetp and solution to various executives, receiving very positive feedback and response
+- Presented the concept and solution to various executives, receiving very positive feedback
 
 Skills: Data Science, Software Design, +3 skills
 

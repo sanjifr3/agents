@@ -15,6 +15,8 @@ Focus more on basics and foundational knowledge.
 
 
 class SearchItem(BaseModel):
+    """A search item for the web search plan"""
+
     reason: str = Field(
         description="Your reasoning for why this search is important to the query."
     )
@@ -22,6 +24,8 @@ class SearchItem(BaseModel):
 
 
 class WebSearchPlan(BaseModel):
+    """A plan for web searches to perform to best answer the query"""
+
     searches: list[SearchItem] = Field(
         description="A list of web searches to perform to best answer the query."
     )
@@ -30,7 +34,7 @@ class WebSearchPlan(BaseModel):
 planner_agent = Agent(
     name="Planner agent",
     instructions=INSTRUCTIONS,
-    model=gemini_model,
+    model="gpt-4o-mini",
     output_type=WebSearchPlan,
 )
 

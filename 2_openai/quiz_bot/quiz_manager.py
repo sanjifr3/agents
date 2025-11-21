@@ -1,93 +1,36 @@
 import asyncio
 
-from agents import Runner, gen_trace_id, trace
+from agents import Agent, Runner, gen_trace_id, trace
 from email_agent import email_agent
-from planner_agent import SearchItem, WebSearchPlan, planner_agent
-from search_agent import search_agent
-from writer_agent import FoundationalKnowledgeData, writer_agent
+from grader_agent import grader_agent
+from models import gemini_model
+from quiz_agent import quiz_agent
+
+INSTRUCTIONS = """
+You are a quiz manager agent that is responsible for orchestrating a quiz with a student.
+You will be provided the foundational knowledge to base the quiz on,
+and given access to a quiz agent to generate questions, answers with reasoning, and a grader agent to grade QA pairs.
+
+You also have access to an email agent to send the foundational knowledge, and quiz to the student, should they request it.
+If they request it, ensure to ask for their email address to send the email.
+"""
+
+quiz_manager_agent = Agent(
+    name="Quiz manager agent",
+    instructions=INSTRUCTIONS,
+    tools=[quiz_agent, grader_agent, email_agent],
+    model="gpt-4o-mini",
+)
 
 
-class QuizManager:
-    async def run(self, query: str):
-        """Run the deep research process, yielding the tsatus updates and the final results"""
-
-        trace_id = gen_trace_id()
-        with trace("Quiz trace", trace_id=trace_id):
-            print(
-                f"View trace: https://platform.openai.com/traces/trace?trace_id={trace_id}"
-            )
-            yield f"View trace: https://platform.openai.com/traces/trace?trace_id={trace_id}"
-            print("Starting quiz generation...")
-            search_plan = await self.plan_searches(query)
-            yield "Searches planned, starting to search..."  # Prints what is currently happening (better user experience)
-            search_results = await self.perform_searches(search_plan)
-            yield "Searches complete, writing foundational knowledge..."
-            foundational_knowledge = await self.create_foundational_knowledge(
-                query, search_results
-            )
-            yield "Foundational knowledge written, sending email..."
-            await self.send_email(foundational_knowledge)
-            yield "Email sent, quiz generation complete"
-            yield foundational_knowledge.markdown_foundational_knowledge
-
-    async def plan_searches(self, query: str) -> WebSearchPlan:
-        """Plan the searches to perform for the query"""
-        print("Planning searches...")
+async def main():
+    with trace("Quiz manager agent"):
         result = await Runner.run(
-            planner_agent,
-            f"Query: {query}",
+            quiz_manager_agent,
+            "What is the role of governance in the use of generative AI?",
         )
-        print(f"Will perform {len(result.final_output.searches)} searches")
-        return result.final_output_as(WebSearchPlan)
+        print(result.final_output)
 
-    async def perform_searches(self, search_plan: WebSearchPlan) -> list[str]:
-        """Perform the searches to perform for the query"""
-        print("Searching...")
-        num_completed = 0
-        tasks = [
-            asyncio.create_task(self.search(item)) for item in search_plan.searches
-        ]
-        results = []
-        for task in asyncio.as_completed(tasks):
-            result = await task
-            if result is not None:
-                results.append(result)
-            num_completed += 1
-            print(f"Searching... {num_completed}/{len(tasks)} completed")
-        print("Finished searching")
-        return results
 
-    async def search(self, item: SearchItem) -> str | None:
-        """Perform a search for the query"""
-        input = f"Search term: {item.query}\nReason for searching: {item.reason}"
-        try:
-            result = await Runner.run(
-                search_agent,
-                input,
-            )
-            return result.final_output
-        except Exception as e:
-            print(f"Error during search for {item.query}: {e}")
-            return None
-
-    async def create_foundational_knowledge(
-        self, query: str, search_results: list[str]
-    ) -> FoundationalKnowledgeData:
-        """Write the foundational knowledge for the quiz"""
-        print("Thinking about foundational knowledge...")
-        input = f"Original query: {query}\nSummarized search results: {search_results}"
-        result = await Runner.run(
-            writer_agent,
-            input,
-        )
-        return result.final_output_as(FoundationalKnowledgeData)
-
-    async def send_email(self, foundational_knowledge: FoundationalKnowledgeData):
-        """Send the foundational knowledge via email"""
-        print("Sending email...")
-        email_content = f"Subject: Foundational Knowledge Document\n\n{foundational_knowledge.markdown_foundational_knowledge}"
-        await Runner.run(
-            email_agent,
-            email_content,
-        )
-        print("Email sent.")
+if __name__ == "__main__":
+    asyncio.run(main())
