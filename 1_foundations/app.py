@@ -81,7 +81,7 @@ class Me:
     def __init__(self):
         self.openai = OpenAI()
         self.name = "Sanjif Rajaratnam"
-        with open("me/experiences.md", "r", encoding="utf-8") as f:
+        with open("me/linkedin.md", "r", encoding="utf-8") as f:
             self.experiences = f.read()
         with open("me/summary.txt", "r", encoding="utf-8") as f:
             self.summary = f.read()
