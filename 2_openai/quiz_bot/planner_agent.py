@@ -1,8 +1,9 @@
 import asyncio
 
-from agents import Agent, Runner, trace
 from models import gemini_model
 from pydantic import BaseModel, Field
+
+from agents import Agent, Runner, trace
 
 N_SEARCHES = 5
 
@@ -34,16 +35,6 @@ class WebSearchPlan(BaseModel):
 planner_agent = Agent(
     name="Planner agent",
     instructions=INSTRUCTIONS,
-    model="gpt-4o-mini",
+    model="gpt-5-nano",
     output_type=WebSearchPlan,
 )
-
-
-async def main():
-    with trace("Planner agent"):
-        result = await Runner.run(planner_agent, "Machine Learning and AI")
-        print(result)
-
-
-if __name__ == "__main__":
-    asyncio.run(main())

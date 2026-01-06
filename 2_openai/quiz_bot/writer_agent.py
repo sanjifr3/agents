@@ -1,6 +1,7 @@
-from agents import Agent, Runner, trace
 from models import gemini_model
 from pydantic import BaseModel, Field
+
+from agents import Agent, Runner, trace
 
 INSTRUCTIONS = """
 You are a subject matter expert tasked with creating the foundational knowledge that a quiz questions will be based on.
@@ -29,6 +30,6 @@ class FoundationalKnowledgeData(BaseModel):
 writer_agent = Agent(
     name="Writer agent",
     instructions=INSTRUCTIONS,
-    model=gemini_model,
+    model="gpt-5-nano",
     output_type=FoundationalKnowledgeData,
 )

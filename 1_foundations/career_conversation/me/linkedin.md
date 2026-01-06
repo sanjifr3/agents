@@ -189,8 +189,8 @@ Bachelor of Applied Science (BASc), Mechanical Engineering, 85.37%
 ## Licenses & Certifications
 
 - Microsoft Certified: Azure AI Engineer Associate
-- Microsoft Cerfified: Azure Administrator Associate
 - Microsoft Certified: Azure Data Scientist Associate
+- Microsoft Cerfified: Azure Administrator Associate
 - Microsoft Certified: Azure AI Fundamentals
 - Microsoft Certified: Azure Fundamentals
 - DeepLearning.ai Deep Learning Specialization
