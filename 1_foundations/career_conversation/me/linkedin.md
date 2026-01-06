@@ -195,27 +195,9 @@ Bachelor of Applied Science (BASc), Mechanical Engineering, 85.37%
 - Microsoft Certified: Azure Fundamentals
 - DeepLearning.ai Deep Learning Specialization
 
-## Projects
-
-Narrator  
-Jan 2019 - Apr 2019  
-Associated with Insight Data Science
-
-The Narrator service was developed with the intention of helping content creators get AI generated auditory descriptions of scenes and images that they can use to make their content more accessible for people with vision impairment.
-
-Developed multimodal generative AI system converting images/videos to text/audio descriptions for accessibility. Built CNN-RNN models in PyTorch and deployed scalable inference APIs on AWS for accessibility-focused multimodal AI applications
-
----
-
-Predicting Price Changes w/ Network Structure  
-Jan 2017 - Apr 2017  
-Associated with University of Toronto
-
-Predicted changes in the price of Ethereum by analyzing the time series of the transaction graph of the most active users on the network using Scala, SQL, PCA, and Spark MLLib. Adapted peer-reviewed algorithm to new Ethereum transaction dataset for predictive modeling.
-
 ## Honors and Awards
 
-Q4 Legendary Award  
+Legendary Award  
 Issued by TD · Oct 2025  
 Associated with TD
 
