@@ -1,6 +1,10 @@
 import asyncio
 
+from models import perplexity_model
+
 from agents import Agent, ModelSettings, Runner, WebSearchTool, trace
+
+USE_OPENAI = False
 
 INSTRUCTIONS = """
 You are a research assistant helping to create content for a quiz generator bot.  
@@ -15,10 +19,20 @@ or [Title](URL). Keep all source links intact in your summary.
 Do not include any additional commentary other than the summary itself with preserved source links.
 """
 
-search_agent = Agent(
-    name="Search agent",
-    instructions=INSTRUCTIONS,
-    tools=[WebSearchTool(search_context_size="low")],
-    model="gpt-5-nano",
-    model_settings=ModelSettings(tool_choice="required"),
-)
+search_agent: Agent
+
+if USE_OPENAI:
+    search_agent = Agent(
+        name="Search agent",
+        instructions=INSTRUCTIONS,
+        tools=[WebSearchTool(search_context_size="low")],
+        model="gpt-5-nano",
+        model_settings=ModelSettings(tool_choice="required"),
+    )
+else:
+    search_agent = Agent(
+        name="Search agent",
+        instructions=INSTRUCTIONS,
+        model=perplexity_model,
+        model_settings=ModelSettings(tool_choice="required"),
+    )

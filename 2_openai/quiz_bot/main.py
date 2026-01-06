@@ -6,7 +6,7 @@ load_dotenv(override=True)
 
 
 async def run(query: str):
-    async for chunk in ().run(query):
+    async for chunk in ResearchManager().run(query):
         yield chunk
 
 

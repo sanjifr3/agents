@@ -15,6 +15,7 @@ dependencies = [
     { name = "anthropic" },
     { name = "autogen-agentchat" },
     { name = "autogen-ext", extra = ["grpc", "mcp", "ollama", "openai"] },
+    { name = "bitwarden-sdk" },
     { name = "bs4" },
     { name = "google-adk" },
     { name = "google-genai" },
@@ -33,6 +34,7 @@ dependencies = [
     { name = "mcp-server-fetch" },
     { name = "openai" },
     { name = "openai-agents" },
+    { name = "perplexityai" },
     { name = "playwright" },
     { name = "plotly" },
     { name = "polygon-api-client" },
@@ -59,6 +61,7 @@ requires-dist = [
     { name = "anthropic", specifier = ">=0.49.0" },
     { name = "autogen-agentchat", specifier = ">=0.4.9.2" },
     { name = "autogen-ext", extras = ["grpc", "mcp", "ollama", "openai"], specifier = ">=0.4.9.2" },
+    { name = "bitwarden-sdk", specifier = ">=1.0.0" },
     { name = "bs4", specifier = ">=0.0.2" },
     { name = "google-adk", specifier = ">=1.18.0" },
     { name = "google-genai", specifier = ">=1.50.1" },
@@ -77,6 +80,7 @@ requires-dist = [
     { name = "mcp-server-fetch", specifier = ">=2025.1.17" },
     { name = "openai", specifier = ">=1.68.2" },
     { name = "openai-agents", specifier = ">=0.0.15" },
+    { name = "perplexityai", specifier = ">=0.22.2" },
     { name = "playwright", specifier = ">=1.51.0" },
     { name = "plotly", specifier = ">=6.0.1" },
     { name = "polygon-api-client", specifier = ">=1.14.5" },
@@ -528,6 +532,22 @@ wheels = [
 ]
 
 [[package]]
+name = "bitwarden-sdk"
+version = "1.0.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "dateutils" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/dd/03/11934ae9d668283895286872a7af3de25d324ec9ac86da5a56ac9dc48544/bitwarden_sdk-1.0.0.tar.gz", hash = "sha256:846bc84ebc29ba326211e6552e628cd7d000a986ef35552ffda9d10bde913e21", size = 374462 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/b7/3f/34432667d89b9e3368f0e929f77417e21a4351ab52717f64fbf28e2cd68b/bitwarden_sdk-1.0.0-cp312-cp312-macosx_10_12_x86_64.whl", hash = "sha256:cc493f18fee92860b069cd18365ba668d28b52a555157d1a18b5ab0480dadf59", size = 2423031 },
+    { url = "https://files.pythonhosted.org/packages/9d/aa/73415b9995722eeb0861fcf49166572d8159c06d6df56f9944774519ce69/bitwarden_sdk-1.0.0-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:9f7f9bfc8923dcb0ca88fb6eefae43cd928805f536f746be1db4a8dfc9b5f44d", size = 2260092 },
+    { url = "https://files.pythonhosted.org/packages/bb/47/f849a9402b931f56f5476f603b21cda92e90323fb73ad2546014e3b8eb52/bitwarden_sdk-1.0.0-cp312-cp312-manylinux_2_28_aarch64.whl", hash = "sha256:9a6aada6f421f5fc26f4e9bbc7f3e538439cb388794021214e49ce7578a8d345", size = 2537437 },
+    { url = "https://files.pythonhosted.org/packages/dc/3a/42f4ae601947e39a48cb3e23e672fe467bb9ed22ebe869778860cece8c4a/bitwarden_sdk-1.0.0-cp312-cp312-manylinux_2_28_x86_64.whl", hash = "sha256:2fae1101b527ffdceed2f817d16d20076a5949df9fc64184053f09ff79f035f3", size = 2616881 },
+    { url = "https://files.pythonhosted.org/packages/28/b3/43fda8bac7e21e431088270ad2e5d0deaa4847315f1687c9b8eacb56300f/bitwarden_sdk-1.0.0-cp312-none-win_amd64.whl", hash = "sha256:7198c80a1cb87d28f2f134db3296b3e34255c8ba4b9863a5c9a2dca3c2ce6803", size = 2235663 },
+]
+
+[[package]]
 name = "bs4"
 version = "0.0.2"
 source = { registry = "https://pypi.org/simple" }
@@ -734,6 +754,19 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/64/a4/f71d9cf3a5ac257c993b5ca3f93df5f7fb395c725e7f1e6479d2514173c3/dataclasses_json-0.6.7.tar.gz", hash = "sha256:b6b3e528266ea45b9535223bc53ca645f5208833c29229e847b3f26a1cc55fc0", size = 32227 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/c3/be/d0d44e092656fe7a06b55e6103cbce807cdbdee17884a5367c68c9860853/dataclasses_json-0.6.7-py3-none-any.whl", hash = "sha256:0dbf33f26c8d5305befd61b39d2b3414e8a407bedc2834dea9b8d642666fb40a", size = 28686 },
+]
+
+[[package]]
+name = "dateutils"
+version = "0.6.12"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "python-dateutil" },
+    { name = "pytz" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/70/2e/a2d1337ac0ebb32b3b4ad921d9621f8b2f6bb20de0da47ec5d3734f08ce2/dateutils-0.6.12.tar.gz", hash = "sha256:03dd90bcb21541bd4eb4b013637e4f1b5f944881c46cc6e4b67a6059e370e3f1", size = 4954 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/1e/23/cbac954194e5132448cfec0148be1318baac99e68ed597b3d7ff4ae5c182/dateutils-0.6.12-py2.py3-none-any.whl", hash = "sha256:f33b6ab430fa4166e7e9cb8b21ee9f6c9843c48df1a964466f52c79b2a8d53b3", size = 5718 },
 ]
 
 [[package]]
@@ -3117,6 +3150,23 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/67/93/8f2c2075b180c12c1e9f6a09d1a985bc2036906b13dff1d8917e395f2048/pathable-0.4.4.tar.gz", hash = "sha256:6905a3cd17804edfac7875b5f6c9142a218c7caef78693c2dbbbfbac186d88b2", size = 8124 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/7d/eb/b6260b31b1a96386c0a880edebe26f89669098acea8e0318bff6adb378fd/pathable-0.4.4-py3-none-any.whl", hash = "sha256:5ae9e94793b6ef5a4cbe0a7ce9dbbefc1eec38df253763fd0aeeacf2762dbbc2", size = 9592 },
+]
+
+[[package]]
+name = "perplexityai"
+version = "0.22.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "anyio" },
+    { name = "distro" },
+    { name = "httpx" },
+    { name = "pydantic" },
+    { name = "sniffio" },
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/47/f0/4ead48afbe4c9d7b57e9d03e253bed2986ac20d2257ed918cac276949018/perplexityai-0.22.2.tar.gz", hash = "sha256:9c3cad307c95aa5e8967358547e548d58793d350318d8d1d4aa33a933cbed844", size = 113014 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/cb/aa/fc3337fdb014b1584297fc212552e6365d22a6fb77850a56c9038cd47173/perplexityai-0.22.2-py3-none-any.whl", hash = "sha256:92d3dc7f4e110c879ac5009daf7263a04f413523f7d76fba871176516c253890", size = 96860 },
 ]
 
 [[package]]
