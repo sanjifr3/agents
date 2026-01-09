@@ -33,10 +33,12 @@ with gr.Blocks(title="Sidekick", theme=gr.themes.Default(primary_hue="emerald"))
     sidekick = gr.State(delete_callback=free_resources)
 
     with gr.Row():
-        chatbot = gr.Chatbot(label="Sidekick", height=300, type="messages")
+        chatbot = gr.Chatbot(label="Sidekick", height=300)
     with gr.Group():
         with gr.Row():
-            message = gr.Textbox(show_label=False, placeholder="Your request to the Sidekick")
+            message = gr.Textbox(
+                show_label=False, placeholder="Your request to the Sidekick"
+            )
         with gr.Row():
             success_criteria = gr.Textbox(
                 show_label=False, placeholder="What are your success critiera?"
@@ -47,13 +49,19 @@ with gr.Blocks(title="Sidekick", theme=gr.themes.Default(primary_hue="emerald"))
 
     ui.load(setup, [], [sidekick])
     message.submit(
-        process_message, [sidekick, message, success_criteria, chatbot], [chatbot, sidekick]
+        process_message,
+        [sidekick, message, success_criteria, chatbot],
+        [chatbot, sidekick],
     )
     success_criteria.submit(
-        process_message, [sidekick, message, success_criteria, chatbot], [chatbot, sidekick]
+        process_message,
+        [sidekick, message, success_criteria, chatbot],
+        [chatbot, sidekick],
     )
     go_button.click(
-        process_message, [sidekick, message, success_criteria, chatbot], [chatbot, sidekick]
+        process_message,
+        [sidekick, message, success_criteria, chatbot],
+        [chatbot, sidekick],
     )
     reset_button.click(reset, [], [message, success_criteria, chatbot, sidekick])
 

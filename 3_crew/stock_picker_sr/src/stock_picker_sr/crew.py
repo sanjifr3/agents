@@ -2,6 +2,9 @@ from typing import List
 
 from crewai import Agent, Crew, Process, Task
 from crewai.agents.agent_builder.base_agent import BaseAgent
+from crewai.memory import EntityMemory, LongTermMemory, ShortTermMemory
+from crewai.memory.storage.ltm_sqlite_storage import LTMSQLiteStorage
+from crewai.memory.storage.rag_storage import RAGStorage
 from crewai.project import CrewBase, agent, crew, task
 from crewai_tools import SerperDevTool
 from pydantic import BaseModel, Field
@@ -56,8 +59,10 @@ class StockPickerSr:
         return Agent(
             config=self.agents_config["trending_company_finder"],
             tools=[SerperDevTool()],
+            memory=True,
         )
 
+    # No memory here so it goes out and does research
     @agent
     def financial_researcher(self) -> Agent:
         return Agent(
@@ -67,7 +72,9 @@ class StockPickerSr:
     @agent
     def stock_picker(self) -> Agent:
         return Agent(
-            config=self.agents_config["stock_picker"], tools=[PushNotificationTool()]
+            config=self.agents_config["stock_picker"],
+            tools=[PushNotificationTool()],
+            memory=True,
         )
 
     @task
@@ -94,6 +101,32 @@ class StockPickerSr:
     def crew(self) -> Crew:
         manager = Agent(config=self.agents_config["manager"], allow_delegation=True)
 
+        short_term_memory = ShortTermMemory(
+            storage=RAGStorage(
+                embedder_config={
+                    "provider": "openai",
+                    "config": {"model_name": "text-embedding-3-small"},
+                },
+                type="short_term",
+                path="./memory/",
+            )
+        )
+
+        long_term_memory = LongTermMemory(
+            storage=LTMSQLiteStorage(db_path="./memory/long_term_memory_storage.db")
+        )
+
+        entity_memory = EntityMemory(
+            storage=RAGStorage(
+                embedder_config={
+                    "provider": "openai",
+                    "config": {"model_name": "text-embedding-3-small"},
+                },
+                type="entity",
+                path="./memory/",
+            )
+        )
+
         return Crew(
             agents=self.agents,
             tasks=self.tasks,
@@ -101,4 +134,8 @@ class StockPickerSr:
             process=Process.hierarchical,
             verbose=True,
             manager_agent=manager,
+            memory=True,
+            short_term_memory=short_term_memory,
+            long_term_memory=long_term_memory,
+            entity_memory=entity_memory,
         )

@@ -1,1 +1,24 @@
-{"companies":[{"name":"Accenture","ticker":"ACN","reason":"Recently acquired Faculty to boost its AI capabilities, paving the way for enhanced services in digital transformation."},{"name":"Roku","ticker":"ROKU","reason":"Recognized as a top tech stock to consider this month due to its strategic initiatives to enhance its streaming platform and overall performance."},{"name":"Anthropic","ticker":"N/A","reason":"Currently raising $10 billion, valuing the company at $350 billion, marking it as a significant entity in AI development and investment interest."}]}
+{
+    "companies": [
+        {
+            "name": "Workai",
+            "ticker": "Not publicly listed yet",
+            "reason": "Introduction of new AI tools that enhance employee engagement and training in hybrid work environments."
+        },
+        {
+            "name": "Notegpt",
+            "ticker": "Not publicly listed yet",
+            "reason": "Explosive growth noted for its generative AI services focusing on note-taking and content generation."
+        },
+        {
+            "name": "Abacus AI",
+            "ticker": "Not publicly listed yet",
+            "reason": "Rapid growth in providing AI solutions for machine learning deployment in businesses."
+        },
+        {
+            "name": "Rosebud AI",
+            "ticker": "Not publicly listed yet",
+            "reason": "Innovative focus on synthetic data creation and AI-generated imagery for enhancing data privacy and availability in creative sectors."
+        }
+    ]
+}
