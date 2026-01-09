@@ -31,6 +31,7 @@ def free_resources(sidekick):
 with gr.Blocks(title="Sidekick", theme=gr.themes.Default(primary_hue="emerald")) as ui:
     gr.Markdown("## Sidekick Personal Co-Worker")
     sidekick = gr.State(delete_callback=free_resources)
+    # Each session will have it's own state, and in the initialization of the state, the process thread is randomly selected so that it is unique.
 
     with gr.Row():
         chatbot = gr.Chatbot(label="Sidekick", height=300)
@@ -50,8 +51,8 @@ with gr.Blocks(title="Sidekick", theme=gr.themes.Default(primary_hue="emerald"))
     ui.load(setup, [], [sidekick])
     message.submit(
         process_message,
-        [sidekick, message, success_criteria, chatbot],
-        [chatbot, sidekick],
+        [sidekick, message, success_criteria, chatbot],  # inputs
+        [chatbot, sidekick],  # outputs
     )
     success_criteria.submit(
         process_message,
