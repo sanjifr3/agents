@@ -13,7 +13,9 @@ deepseek_api_key = os.getenv("DEEPSEEK_API_KEY")
 groq_api_key = os.getenv("GROQ_API_KEY")
 azure_api_key = os.getenv("AZURE_API_KEY")
 perplexity_api_key = os.getenv("PERPLEXITY_API_KEY")
+ollama_api_key = "ollama"
 
+OLLAMA_BASE_URL = "http://localhost:11434/v1/"
 GEMINI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
 DEEPSEEK_BASE_URL = "https://api.deepseek.com/v1"
 GROQ_BASE_URL = "https://api.groq.com/openai/v1"
@@ -32,6 +34,7 @@ azure_client = AsyncAzureOpenAI(
     api_key=azure_api_key,
     api_version="2025-01-01-preview",
 )
+ollama_client = AsyncOpenAI(base_url=OLLAMA_BASE_URL, api_key=ollama_api_key)
 
 deepseek_model = OpenAIChatCompletionsModel(
     model="deepseek-chat", openai_client=deepseek_client
@@ -46,3 +49,4 @@ perplexity_model = OpenAIChatCompletionsModel(
     model="sonar-pro", openai_client=perplexity_client
 )
 azure_model = OpenAIChatCompletionsModel(model="gpt-5", openai_client=azure_client)
+ollama_model = OpenAIChatCompletionsModel(model="llama3.2", openai_client=ollama_client)
